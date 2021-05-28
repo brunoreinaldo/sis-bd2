@@ -5,7 +5,7 @@ function RetornaConexao()
   $servername = 'db';
   $username = 'root';
   $password = '123456';
-  $schema = 'db_app_db2';
+  $schema = 'biblioteca';
 
   $conexao = mysqli_connect($servername, $username, $password, $schema);
 

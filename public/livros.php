@@ -21,18 +21,22 @@
 
         $conexao = RetornaConexao();
 
+        $isbn = 'isbn';
         $titulo = 'titulo';
         $autor = 'autor';
-        $classificacao = 'classificacao';
+        $n_paginas = 'n_paginas';
+        $idioma = 'idioma';
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
         $sql =
-            'SELECT ' . $titulo .
+            'SELECT ' . $isbn .
+            '     , ' . $titulo .
             '     , ' . $autor .
-            '     , ' . $classificacao .
+            '     , ' . $n_paginas .
+            '     , ' . $idioma .
             /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livros';
+            '  FROM livro';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -45,10 +49,12 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
+            '        <th>' . $isbn . '</th>' .
             '        <th>' . $titulo . '</th>' .
             '        <th>' . $autor . '</th>' .
             /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
-            '        <th>' . $classificacao . '</th>' .
+            '        <th>' . $n_paginas . '</th>' .
+            '        <th>' . $idioma . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -58,10 +64,12 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$titulo] . '</td>' .
+                echo '<td>' . $registro[$isbn] . '</td>' .
+                    '<td>' . $registro[$titulo] . '</td>' .
                     '<td>' . $registro[$autor] . '</td>' .
                     /* TODO-4: Adicione a tabela os novos registros. */
-                    '<td>' . $registro[$classificacao] . '</td>';
+                    '<td>' . $registro[$n_paginas] . '</td>' .
+                    '<td>' . $registro[$idioma] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
